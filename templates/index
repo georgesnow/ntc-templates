@@ -355,6 +355,7 @@ huawei_vrp_display_lldp_neighbor.textfsm, .*, huawei_vrp, disp[[lay]] lldp nei[[
 huawei_vrp_display_temperature.textfsm, .*, huawei_vrp, disp[[lay]] tem[[perature]]
 huawei_vrp_display_version.textfsm, .*, huawei_vrp, disp[[lay]] ver[[sion]]
 
+juniper_junos_show_bgp_summary.textfsm, .*, juniper_junos, sh[[ow]] bgp su[[mmary]]
 juniper_junos_show_chassis_cluster_interfaces.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] c[[luster]] i[[nterface]]
 juniper_junos_show_chassis_cluster_status.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] c[[luster]] s[[tatus]]
 juniper_junos_show_chassis_firmware.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] fi[[rmware]]
