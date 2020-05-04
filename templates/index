@@ -359,6 +359,7 @@ juniper_junos_show_bgp_summary.textfsm, .*, juniper_junos, sh[[ow]] bgp su[[mmar
 juniper_junos_show_chassis_cluster_interfaces.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] c[[luster]] i[[nterface]]
 juniper_junos_show_chassis_cluster_status.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] c[[luster]] s[[tatus]]
 juniper_junos_show_chassis_firmware.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] fi[[rmware]]
+juniper_junos_show_chassis_hardware.textfsm, .*, juniper_junos, sh[[ow]] ch[[assis]] ha[[rdware]]
 juniper_junos_show_arp_no-resolve.textfsm, .*, juniper_junos, sh[[ow]] a[[rp]] n[[o-resolve]]
 juniper_junos_show_isis_adjacency.textfsm, .*, juniper_junos, sh[[ow]] is[[is]] ad[[jacency]]
 juniper_junos_show_ospf_neighbor.textfsm, .*, juniper_junos, sh[[ow]] ospf n[[eighbor]]

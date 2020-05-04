@@ -1,0 +1,19 @@
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                A1111             MX104
+Midplane         REV 49   750-044219   CADS6304          MX104
+PEM 0            REV 04   740-045933   1H394958039       AC Power Entry Module
+PEM 1            REV 04   740-045933   1H171234566       AC Power Entry Module
+Routing Engine 0 REV 07   750-053342   CAD01234          RE-MX-104
+AFEB 0                    BUILTIN      BUILTIN           Forwarding Engine Processor
+FPC 0                     BUILTIN      BUILTIN           MPC BUILTIN
+  MIC 0          REV 25   750-028380   ABCV1234          3D 2x 10GE XFP
+    PIC 0                 BUILTIN      BUILTIN           1x 10GE XFP
+      Xcvr 0     REV 01   740-014279   EOXH27123456      XFP-10G-LR
+    PIC 1                 BUILTIN      BUILTIN           1x 10GE XFP
+      Xcvr 0     REV 01   740-014279   EOXH27123456      XFP-10G-LR
+  MIC 1          REV 25   750-028380   ABCV8956          3D 2x 10GE XFP
+    PIC 2                 BUILTIN      BUILTIN           1x 10GE XFP
+      Xcvr 0     REV 01   740-014279   EOXH27123456      XFP-10G-LR
+    PIC 3                 BUILTIN      BUILTIN           1x 10GE XFP
+      Xcvr 0              NON-JNPR     AA12BK0AA         XFP-10G-SR
