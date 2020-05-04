@@ -1,0 +1,19 @@
+Value ITEM (\S*\s{1}\d+|Routing\s*Engine\s*\d+|\S*)
+Value VERSION (\S*)
+Value PART_NUMBER (NON-JNPR|BUILTIN|\d{3}-\d+)
+Value SERIAL_NUMBER (\S*)
+Value DESCRIPTION (.*)
+
+Value ROUTING_ENGINE (\w+\s{1}\S*\s{1}\d+)
+
+Start
+  ^[Hh]ardware\s*[Ii]nventory:
+  ^[Ii]tem\s*[Vv]ersion\s*[Pp]art\s*[Nn]umber\s*[Ss]erial [Nn]umber\s*[Dd]escription
+  ^\s*[Cc]hassis.* -> Chassis
+
+  
+  
+Chassis
+	^\s*${ITEM}\s*${SERIAL_NUMBER}\s*${DESCRIPTION} -> Record
+    ^\s*$$
+    ^. -> Error
