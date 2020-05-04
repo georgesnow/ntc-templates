@@ -1,10 +1,3 @@
-Value TBLINSTANCE ([A-Za-z]*6*\.\S+)
-Value TBLTOTPATH (\d+)
-Value TBLACTPATHS (\d+)
-Value TBLSUPPRESSED (\d+)
-Value TBLHISTORYDAMP (\d+)
-Value TBLSTATE (\d+)
-Value TBLPENDING (\d+)
 Value PEER (\d+\.\d+\.\d+\.\d+|\S+)
 Value AS (\d+)
 Value INPKT (\d+)
@@ -22,17 +15,16 @@ Value DAMPED (\d+)
 Start
   ^Groups:\s*\d+\s*Peers:\s*\d+\s*Down\s*peers:\s*\d+
   ^Table\s*Tot\s*Paths\s*Act\sPaths\s*Suppressed\s*History\s*Damp\s*State\s*Pending\s* -> Table
+  ^Peer\s*AS\s*InPkt\s*OutPkt\s*OutQ\s*Flaps\s*Last\sUp\/Dwn\s*State\|#Active\/Received\/Accepted\/Damped\.+\s* -> Peer
   ^. -> Error
 
 Table
-  ^${TBLINSTANCE}
-  ^${TBLTOTPATH}\s*${TBLACTPATHS}\s*${TBLSUPPRESSED}\s*${TBLHISTORYDAMP}\s*${TBLSTATE}\s*${TBLPENDING}
-  ^Peer\s*AS\s*InPkt\s*OutPkt\s*OutQ\s*Flaps\s*Last\sUp\/Dwn\s*State\|#Active\/Received\/Accepted\/Damped\.+\s*
-  ^${PEER}\s*${AS}\s*${INPKT}\s*${OUTPKT}\s*${OUTQ}\s*${FLAPS}\s*${LASTUPDOWN}\s*${STATE}\s*$$ -> Peer
+  ^[A-Za-z]*6*\.\S+\s*
+  ^\s*\d+\s*\d+\s*\d+\s*\d+\s*\d+\s*\d+
+  ^Peer\s*AS\s*InPkt\s*OutPkt\s*OutQ\s*Flaps\s*Last\sUp\/Dwn\s*State\|#Active\/Received\/Accepted\/Damped\.+\s* -> Peer
   ^. -> Error
 
 Peer
-  ^\s*${INSTANCE}:\s*${ACTIVE}\/${RECEIVED}\/${ACCEPTED}\/${DAMPED}\s*$$
-  ^(\d+\.\d+\.\d+\.\d+|\S+) -> Continue.Record
-  ^${PEER}\s*${AS}\s*${INPKT}\s*${OUTPKT}\s*${OUTQ}\s*${FLAPS}\s*${LASTUPDOWN}\s*${STATE}\s*$$
+  ^${PEER}\s*${AS}\s*${INPKT}\s*${OUTPKT}\s*${OUTQ}\s*${FLAPS}\s*${LASTUPDOWN}\s*${STATE} -> Record
+  ^\s*${INSTANCE}:\s*${ACTIVE}\/${RECEIVED}\/${ACCEPTED}\/${DAMPED} -> Record
   ^. -> Error
