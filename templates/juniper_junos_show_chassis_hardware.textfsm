@@ -1,19 +1,35 @@
 Value ITEM (\S*\s{1}\d+|Routing\s*Engine\s*\d+|\S*)
-Value VERSION (\S*)
-Value PART_NUMBER (NON-JNPR|BUILTIN|\d{3}-\d+)
+Value VERSION (REV\s*\S*|\s*)
+Value PART_NUMBER (NON-JNPR|BUILTIN|\d{3}-\d+|\s*)
 Value SERIAL_NUMBER (\S*)
-Value DESCRIPTION (.*)
-
-Value ROUTING_ENGINE (\w+\s{1}\S*\s{1}\d+)
+Value DESCRIPTION (\S*)
+# Value ROUTING_ENGINE (\w+\s{1}\S*\s{1}\d+)
 
 Start
   ^[Hh]ardware\s*[Ii]nventory:
   ^[Ii]tem\s*[Vv]ersion\s*[Pp]art\s*[Nn]umber\s*[Ss]erial [Nn]umber\s*[Dd]escription
-  ^\s*[Cc]hassis.* -> Chassis
+  ^${ITEM}\s*${SERIAL_NUMBER}\s*${DESCRIPTION}\s* -> Continue.Record
+  ^\S*\s*\S*\s*\S* -> NextItem
+  ^\s*$$
+  ^. -> Error
 
+NextItem
+  ^\s*${ITEM}\s*${VERSION}\s*${PART_NUMBER}\s*${SERIAL_NUMBER}\s*${DESCRIPTION}\s*.* -> Continue.Record
+  ^\S*\s*\S*\s*\S*
+  ^[Rr]outing\s*[Ee]ngine\s*\S* -> Slots
+  ^\s*$$
+  ^. -> Error
   
-  
-Chassis
-	^\s*${ITEM}\s*${SERIAL_NUMBER}\s*${DESCRIPTION} -> Record
-    ^\s*$$
-    ^. -> Error
+Slots
+  # ^[Rr]outing\s*[Ee]ngine\s*\S*
+  ^\s*${ITEM}\s*${VERSION}${PART_NUMBER}\s*${SERIAL_NUMBER}\s*${DESCRIPTION}\s*$$ -> Continue.Record
+  ^\s*{ITEM}\s*${VERSION}\s*${PART_NUMBER}\s*${SERIAL_NUMBER}\s*${DESCRIPTION} -> Continue.Record
+  # ^[Pp]ower\s*[Ss]upply\s*\d+\s*\S* -> Power
+  ^\s*$$
+  ^. -> Error
+#
+# Power
+#   ^[Pp]ower\s*[Ss]upply\s*\d+\s*\S*
+#   ^\s*${ITEM}\s*\s*${DESCRIPTION}\s*\S* -> Record
+#   ^\s*$$
+#   ^. -> Error
